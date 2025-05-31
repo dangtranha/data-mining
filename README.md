@@ -92,13 +92,14 @@ Mô hình thử:
 
 
 ## cấu trúc file Jupyter/Folder
+
 project/
+├── data/
+│ ├── online_retail_II.csv
+│ ├── processed_data.csv
+│ ├── customer_features_final.csv
+│ └── customer_features_cleaned.csv
 │
-│── data
-│  │── online_retail_II.csv
-│  │── processed_data.csv
-│  │── customer_features_final.csv
-│  └── customer_features_cleaned.csv
 ├── 1_data_preprocessing.ipynb
 ├── 2_eda_visualization.ipynb
 ├── 3_customer_features.ipynb
@@ -107,6 +108,4 @@ project/
 ├── 6_prediction_returning_customer.ipynb
 ├── 7_summary_and_report.ipynb
 └── README.md
-
-
 
