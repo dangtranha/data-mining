@@ -90,23 +90,3 @@ Mô hình thử:
 * Luật giỏ hàng dễ hiểu (If A → B, Lift = 2.1)
 * Báo cáo markdown hoặc word
 
-
-## cấu trúc file Jupyter/Folder
-project/
-│
-│── data
-│  │── online_retail_II.csv
-│  │── processed_data.csv
-│  │── customer_features_final.csv
-│  └── customer_features_cleaned.csv
-├── 1_data_preprocessing.ipynb
-├── 2_eda_visualization.ipynb
-├── 3_customer_features.ipynb
-├── 4_customer_clustering.ipynb
-├── 5_basket_analysis.ipynb
-├── 6_prediction_returning_customer.ipynb
-├── 7_summary_and_report.ipynb
-└── README.md
-
-
-
