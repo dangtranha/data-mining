@@ -1,3 +1,17 @@
+import importlib
+import subprocess
+import sys
+
+def import_or_install(package, import_name=None):
+    try:
+        importlib.import_module(import_name or package)
+    except ImportError:
+        print(f"Chưa có {package}, đang cài đặt...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+        print(f"Đã cài xong {package}")
+
+import_or_install("papermill")
+
 import papermill as pm
 
 notebooks = [
@@ -7,8 +21,10 @@ notebooks = [
 ]
 
 for nb in notebooks:
-    print(f"Running {nb}...")
+    print(f"Đang chạy {nb}...")
     pm.execute_notebook(
         nb,
-        nb  # ghi đè lên chính nó
+        nb  
     )
+    print(f"Đã chạy xong {nb}.\n")
+print("Tất cả các notebook đã được chạy xong.")
