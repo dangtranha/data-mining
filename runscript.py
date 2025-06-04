@@ -1,30 +1,33 @@
-import importlib
 import subprocess
 import sys
-
-def import_or_install(package, import_name=None):
-    try:
-        importlib.import_module(import_name or package)
-    except ImportError:
-        print(f"Chưa có {package}, đang cài đặt...")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-        print(f"Đã cài xong {package}")
-
-import_or_install("papermill")
-
+import os
 import papermill as pm
 
-notebooks = [
-    "1_data_preprocessing.ipynb",
-    "2_eda_visualization.ipynb",
-    "3_customer_features.ipynb"
-]
+def install_requirements():
+    req_file = "requirements.txt"
+    if os.path.exists(req_file):
+        print("Đang cài đặt các thư viện từ requirements.txt...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", req_file])
+        print("Cài đặt xong tất cả thư viện.\n")
+    else:
+        print("Không tìm thấy requirements.txt, bỏ qua bước cài đặt.")
 
-for nb in notebooks:
-    print(f"Đang chạy {nb}...")
-    pm.execute_notebook(
-        nb,
-        nb  
-    )
-    print(f"Đã chạy xong {nb}.\n")
-print("Tất cả các notebook đã được chạy xong.")
+def run_notebooks():
+    notebooks = [
+        "1_data_preprocessing.ipynb",
+        "2_eda_visualization.ipynb",
+        "3_customer_features.ipynb",
+        "6_Returning_Customer.ipynb",
+    ]
+
+    for nb in notebooks:
+        if not os.path.exists(nb):
+            print(f" Notebook {nb} không tồn tại, bỏ qua.")
+            continue
+        print(f"▶ Đang chạy {nb}...")
+        pm.execute_notebook(nb, nb)
+        print(f" Đã chạy xong {nb}.\n")
+
+if __name__ == "__main__":
+    install_requirements()
+    run_notebooks()
