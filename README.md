@@ -6,7 +6,7 @@
 | Phân tích giỏ hàng         | Khai phá các tổ hợp sản phẩm thường được mua chung     |
 | Dự đoán quay lại của khách | Ứng dụng học có giám sát (ANN hoặc model truyền thống) |
 
-
+## CHAY FILE runscripts de load du data cho cac service con lai
 
 ### 1. Thu thập và tiền xử lý dữ liệu
 
