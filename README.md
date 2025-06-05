@@ -65,11 +65,13 @@ Sử dụng mô hình dự đoán như Logistic Regression, Random Forest,... đ
 - Cho phép doanh nghiệp giữ chân khách hàng hiệu quả, tăng doanh thu.
 - Có thể kết hợp với RFM để xác định khách hàng có nguy cơ rời bỏ cao.
 
+---
 
-### 7. Trực quan và báo cáo
+### 8. Trực quan và báo cáo
 
 * Biểu đồ cho từng bước (EDA, Clustering, Rules)
 * Scatter plot các nhóm khách hàng
 * Luật giỏ hàng dễ hiểu (If A → B, Lift = 2.1)
 * Báo cáo markdown hoặc word
 
+---
