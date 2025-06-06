@@ -17,6 +17,8 @@ def run_notebooks():
         "1_data_preprocessing.ipynb",
         "2_eda_visualization.ipynb",
         "3_customer_features.ipynb",
+        "4_clustering.ipynb",
+        "5_Customer_Segmentation.ipynb",
     ]
 
     for nb in notebooks:

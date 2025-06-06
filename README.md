@@ -6,7 +6,7 @@
 | Phân tích giỏ hàng         | Khai phá các tổ hợp sản phẩm thường được mua chung     |
 | Dự đoán quay lại của khách | Ứng dụng học có giám sát (ANN hoặc model truyền thống) |
 
-
+## CHAY FILE runscripts de load du data cho cac service con lai
 
 ### 1. Thu thập và tiền xử lý dữ liệu
 
@@ -36,57 +36,42 @@ Tổng hợp hành vi khách hàng:
 | UniqueProductCount | Số sản phẩm khác nhau đã mua    |
 | ReturnRate         | Tỷ lệ đơn hàng bị trả lại       |
 
-### 4. Phân cụm khách hàng (Unsupervised)
+### 4. Phân nhóm khách hàng (Customer Segmentation) và dự đoán đơn hàng bị huỷ
+Sử dụng các chỉ số như RFM (Recency, Frequency, Monetary) để phân loại khách hàng thành các nhóm như:
+- Khách hàng trung thành
+- Khách hàng tiềm năng
+- Khách hàng đã không còn mua hàng,...
 
-Mục tiêu: phân nhóm khách theo hành vi
+Giúp doanh nghiệp thiết kế chiến lược tiếp thị phù hợp cho từng nhóm.
 
-* Chuẩn hóa đặc trưng
-* Áp dụng:
+---
 
-  * `KMeans` (kèm Elbow, Silhouette)
-  * Hoặc thử `DBSCAN`, `Hierarchical`
-* Trực quan:
+### 5. Phân cụm khách hàng (Customer Clustering)
+Ứng dụng thuật toán học máy (ví dụ: KMeans) để tự động chia khách hàng thành các cụm dựa trên hành vi mua sắm.
+- Không cần xác định nhóm trước, các cụm được tạo ra từ dữ liệu.
+- Hữu ích để khám phá các kiểu mẫu hành vi ẩn trong dữ liệu.
 
-  * PCA / t-SNE
-  * Gán nhãn: VIP, trung thành, ngủ quên, vãng lai...
+---
 
+### 6. Phân tích giỏ hàng (Market Basket Analysis)
+Sử dụng các thuật toán như Apriori hoặc FP-Growth để xác định các mẫu sản phẩm thường được mua cùng nhau.
+- Giúp đề xuất sản phẩm, thiết kế combo bán hàng, tăng giá trị đơn hàng trung bình.
+- Ví dụ: “Khách mua Cốc thường cũng mua Đĩa”.
 
-###  5. Phân tích giỏ hàng (Basket Analysis)
+---
 
-* Mục tiêu: tìm sản phẩm thường mua chung
+### 7. Dự đoán khả năng quay lại của khách hàng (Customer Retention Prediction)
+Sử dụng mô hình dự đoán như Logistic Regression, Random Forest,... để ước lượng khả năng khách hàng sẽ tiếp tục mua hàng hay rời bỏ.
+- Cho phép doanh nghiệp giữ chân khách hàng hiệu quả, tăng doanh thu.
+- Có thể kết hợp với RFM để xác định khách hàng có nguy cơ rời bỏ cao.
 
-* Biến hóa đơn thành dạng `Basket Matrix`
-* Dùng:
+---
 
-  * `Apriori` hoặc `FP-Growth`
-* Trích xuất luật kết hợp:
-
-  * Confidence, Lift, Support
-* Ví dụ:
-
-  * Nếu mua **A + B**, thì mua thêm **C**?
-
-
-### 6. Dự đoán khả năng quay lại của khách (Supervised)
-
-* Tạo nhãn:
-
-* `Returning = 1` nếu khách mua >1 lần trong một khoảng thời gian
-* `Returning = 0` nếu chỉ mua một lần
-
-Mô hình thử:
-
-* `ANN (Keras)` – hoặc Logistic Regression, Random Forest
-
-**Đánh giá:**
-
-* Accuracy, F1, ROC AUC
-
-
-### 7. Trực quan và báo cáo
+### 8. Trực quan và báo cáo
 
 * Biểu đồ cho từng bước (EDA, Clustering, Rules)
 * Scatter plot các nhóm khách hàng
 * Luật giỏ hàng dễ hiểu (If A → B, Lift = 2.1)
 * Báo cáo markdown hoặc word
 
+---
